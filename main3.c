@@ -21,10 +21,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include "common.h"
-#include "rmsd.h"
-#include "main.h"
+#include "headerfiles/main.h"
 #include "headerfiles/common.h"
+#include "headerfiles/common2.h"
 #include "headerfiles/fastnnls.h"
 
 #include <gsl/gsl_blas.h>
