@@ -1778,6 +1778,7 @@ int getIntervals3(char *path,int **peaklist,interval *interv,int intervals,heade
 	interv[j].nh=fpart;
 	//	printf("token1: %s\n",token1);
 	intpart=(int) roundf(ppm2pts(fpart,hed,0,1));
+	//	printf("intpart: %d\n",intpart);
 	intpart--;
 	intpart--;
 	interv[j].x1=intpart;

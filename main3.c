@@ -177,7 +177,7 @@ int main(int argc, char **argv) {
   }
 
   readHeader(path1,hed,0,1);
-
+  P(nshapes)
   for(l=0; l<nshapes; l++) {
     if(l==0)
       readHeader(path1,hed,l,1);

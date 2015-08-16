@@ -187,7 +187,7 @@ void readHeader(char *path,header *hed,int shape,int direct) {
 }
 
 void readProdecomptext(char *path,experiments *exp,int nucs,char **nuclei,int exps) {
-
+  
   FILE *f;
   char buffer[1000],buf[40];
   char *t,*token1;
@@ -204,7 +204,6 @@ void readProdecomptext(char *path,experiments *exp,int nucs,char **nuclei,int ex
       while(token1!=NULL && strcmp(token1,"#")!=0) {
 	if(strcmp(token1,"PATH:")==0) {
 	  token1=strtok(NULL," ");
-	  //	  printf("token1: %s\n",token1);
 	  strcpy(exp[j].path,token1);
 	  j++;
 	  break;
@@ -225,16 +224,18 @@ void readProdecomptext(char *path,experiments *exp,int nucs,char **nuclei,int ex
     if(i>5) {
       token1=strtok(buffer," ");
       while(token1!=NULL && strcmp(token1,"#")!=0) {
-	//	printf("1 %d %s %d %d\n",strlen(token1),token1,j,exps);
+	//	printf("2a token1: %s %zu %d %d\n",token1,strlen(token1),j,exps);
 	if(strcmp(token1,"DEFINITION:")==0 && j<exps) { // why exps?
-	  //	  printf("2 %s %d %d\n",strlen(token1),token1,j,exps);
+	  //	  printf("2b token1: %s %d\n",token1,nucs);
 	  for(k=0; k<nucs; k++) {
 	    token1=strtok(NULL,",");
-	    if(k==0) 
+	    if(k==0) {
+	      printf("3a token1 %s %d\n",token1,k);
  	      strcpy(buf,"");
+	    }
 	    else { 
-	      // strcat(buf,nuclei[k]);
-	      //	      printf("token1 %s %d\n",token1,nucs);
+	      //	      strcat(buf,nuclei[k]);
+	      //	      printf("3b token1 %s %d\n",token1,k);
 	      s=atoi(token1);
 	      if(s) { 
 		exp[j].defs[k]=s;
@@ -245,7 +246,7 @@ void readProdecomptext(char *path,experiments *exp,int nucs,char **nuclei,int ex
 		strcat(buf,nuclei[k]);
 	      }
 	    }
-	    //	    printf("defs: %d",exp[j].defs[k]);
+	    //	    printf("defs: %d\n",exp[j].defs[k]);
 	    if(token1==NULL)
 	      break;
 	  }
